@@ -29,10 +29,10 @@ cv2.namedWindow(B2HSVWin)        # Create a named window
 # Positioning da windows
 y = 250
 x = -25
-cv2.moveWindow(regWindow, x,y)  # Move it to (40,30)
-cv2.moveWindow(B2RWin, x+380,y)  # Move it to (40,30)
-cv2.moveWindow(BGR2GrayWin, x+760,y)  # Move it to (40,30)
-cv2.moveWindow(B2HSVWin, x+1140,y)  # Move it to (40,30)
+cv2.moveWindow(regWindow, x, y)  # Move it to (x, y)
+cv2.moveWindow(B2RWin, x+380, y)
+cv2.moveWindow(BGR2GrayWin, x+760, y)
+cv2.moveWindow(B2HSVWin, x+1140, y)
 
 # Scaling factors for resizing
 scale_down = 0.5
