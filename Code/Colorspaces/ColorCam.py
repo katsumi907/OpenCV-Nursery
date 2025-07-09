@@ -48,3 +48,7 @@ while True:
 
 webcam.release()
 cv2.destroyAllWindows()
+
+# Comment here since Github hates me:
+# Next step: define functions to avoid code repetition & try out more color spaces!
+# Drafts: read mkv files instead of mp4 using ffmpeg, and have openCV windows display coordinates & RGB values.
