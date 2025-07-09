@@ -1,9 +1,10 @@
 import os
 import cv2
 
-project_path = "C:\\Users\\maria\\PycharmProjects\\PythonProject"
 
-img = cv2.imread(os.path.join(project_path, "data", "daCatto.jpg"))
+absolute_path = os.path.abspath('daCatto.jpg')
+image_path = os.path.join(absolute_path, '..\\..\\..\\data\\daCatto.jpg')
+img = cv2.imread(image_path)
 
 # Mind that the dimension are entered in OPPOSITE order in which they're displayed in print shape
 img_new = cv2.resize(img, (370, 749))

@@ -1,7 +1,6 @@
 import os
 import cv2
 
-project_path = "C:\\Users\\maria\\PycharmProjects\\PythonProject"
 
 # I've decided to write a method to detect pixel coordinates for the sake of cropping because I'm lazy.
 def click_event(event, x, y, flags, params):
@@ -10,7 +9,10 @@ def click_event(event, x, y, flags, params):
       cv2.putText(img, f'({x},{y})',(x,y),
       cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
-img = cv2.imread(os.path.join(project_path, "data", "daCatto.jpg"))
+
+absolute_path = os.path.abspath('daCatto.jpg')
+image_path = os.path.join(absolute_path, '..\\..\\..\\data\\daCatto.jpg')
+img = cv2.imread(image_path)
 print(img.shape)
 
 # Coordinates are as follows -> [y1:y2, x1:x2] OR [height, width] (It's weird ik, you'll get used to it)

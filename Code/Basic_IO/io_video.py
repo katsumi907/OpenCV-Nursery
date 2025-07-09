@@ -1,11 +1,13 @@
 import os
 import cv2
 
-proj_path = "C:\\Users\\maria\\PycharmProjects\\PythonProject"
 
 # Read video
+absolute_path = os.path.abspath('robloxapp-20230518-1113027.wmv')
+video_path = os.path.join(absolute_path, '..\\..\\..\\data\\robloxapp-20230518-1113027.wmv')
 
-video_path = os.path.join(proj_path, 'data', 'robloxapp-20230518-1113027.wmv')
+#proj_path = "C:\\Users\\maria\\PycharmProjects\\PythonProject"
+#video_path = os.path.join(proj_path, 'data', 'robloxapp-20230518-1113027.wmv')
 
 # Converting mkv to mp4 using ffmpeg cmd, research on this later!
 #os.system("ffmpeg -i Friends_1x22_The_One_With_The_Ick.mkv -codec copy Friends_1x22_The_One_With_The_Ick.mp4")
