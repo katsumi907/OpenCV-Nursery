@@ -1,11 +1,21 @@
 import os
 from base64 import b32encode
-
+import time
 import cv2
+# Figure out how to import a single method without running the whole other file, Bozo
+# from ColorCam import sizeDownFrame
 
+def sizeDownFrame (inputImg, scale_down_factor):
+    smallFrame = cv2.resize(inputImg, None, fx=scale_down_factor, fy=scale_down_factor, interpolation=cv2.INTER_LINEAR)
+    return smallFrame
 # Learn to display the coordinates + RGB values of mouse-hovered pixel
 absolute_path = os.path.abspath('daCatto.jpg')
 image_path = os.path.join(absolute_path, '..\\..\\..\\data\\daCatto.jpg')
+
+scale_down = 0.5
+# Positioning da windows
+y = 250
+x = -25
 
 # Doing some color conversions
 # There are plenty more color spaces. So feel free to check openCV documentation, but you won't will you?? Lazy ass :D
@@ -22,33 +32,29 @@ BGR2GrayWin = "Dis A Classic Cat"
 B2HSVWin = "Dis A Cursed Cat"
 
 cv2.namedWindow(regWindow)
-cv2.namedWindow(B2RWin)        # Create a named window
-cv2.namedWindow(BGR2GrayWin)        # Create a named window
-cv2.namedWindow(B2HSVWin)        # Create a named window
-
-# Positioning da windows
-y = 250
-x = -25
 cv2.moveWindow(regWindow, x, y)  # Move it to (x, y)
+cv2.imshow(regWindow, sizeDownFrame(img, scale_down))
+time.sleep(0.5)
+cv2.namedWindow(B2RWin)
 cv2.moveWindow(B2RWin, x+380, y)
+cv2.imshow(B2RWin, sizeDownFrame(BToR, scale_down))
+time.sleep(0.5)
+cv2.namedWindow(BGR2GrayWin)
 cv2.moveWindow(BGR2GrayWin, x+760, y)
+cv2.imshow(BGR2GrayWin, sizeDownFrame(BGR2Gray, scale_down))
+time.sleep(0.5)
+cv2.namedWindow(B2HSVWin)
 cv2.moveWindow(B2HSVWin, x+1140, y)
+cv2.imshow(B2HSVWin, sizeDownFrame(BGRToHSV, scale_down))
 
-# Scaling factors for resizing
-scale_down = 0.5
 
 # Resize the image & its sisters so they'd fit
-sizeDownImg = cv2.resize(img, None, fx=scale_down, fy=scale_down, interpolation=cv2.INTER_LINEAR)
-sizeDownBToR = cv2.resize(BToR, None, fx=scale_down, fy=scale_down, interpolation=cv2.INTER_LINEAR)
-sizeDownBGR2Gray = cv2.resize(BGR2Gray, None, fx=scale_down, fy=scale_down, interpolation=cv2.INTER_LINEAR)
-sizeDownBGRToHSV = cv2.resize(BGRToHSV, None, fx=scale_down, fy=scale_down, interpolation=cv2.INTER_LINEAR)
+#sizeDownImg = cv2.resize(img, None, fx=scale_down, fy=scale_down, interpolation=cv2.INTER_LINEAR)
+#sizeDownBToR = cv2.resize(BToR, None, fx=scale_down, fy=scale_down, interpolation=cv2.INTER_LINEAR)
+#sizeDownBGR2Gray = cv2.resize(BGR2Gray, None, fx=scale_down, fy=scale_down, interpolation=cv2.INTER_LINEAR)
+#sizeDownBGRToHSV = cv2.resize(BGRToHSV, None, fx=scale_down, fy=scale_down, interpolation=cv2.INTER_LINEAR)
 
 
-# Showing the windows!
-cv2.imshow(regWindow, sizeDownImg)
-cv2.imshow(B2RWin, sizeDownBToR)
-cv2.imshow(BGR2GrayWin, sizeDownBGR2Gray)
-cv2.imshow(B2HSVWin, sizeDownBGRToHSV)
 
 # Old, worthless, windowless displays
 #cv2.imshow('Dis A Cat', img)
